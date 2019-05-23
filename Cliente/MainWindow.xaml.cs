@@ -71,7 +71,7 @@ namespace Cliente
         {
             if (conexionTcp.TcpClient.Connected)
             {
-                var msgPack = new Paquete("login", string.Format("{0},{1}", TextBox1.Text, TextBox2.Text));
+                var msgPack = new Paquete("login", string.Format("{0},{1}", textBoxUsuario.Text, textBoxContraseña.Text));
                 conexionTcp.EnviarPaquete(msgPack);
             }
         }

@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+       Title="Texas Hold'em" Height="350" Width="500" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="button" Content="Enviar" HorizontalAlignment="Left" Margin="185,48,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Label x:Name="label1" Content="Resumen" HorizontalAlignment="Left" Margin="185,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox2" HorizontalAlignment="Left" Height="23" Margin="10,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
-        <TextBox x:Name="TextBox1" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+
+        <Button x:Name="buttonIniciar" Content="Iniciar" HorizontalAlignment="Left" Margin="201,192,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.48,-2.6" Background="Gold" Click="Button_Click" />
+        <Label x:Name="LabelUsuario" Content="Usuario" HorizontalAlignment="Left" Margin="213,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Height="23" Margin="182,75,0,0" TextWrapping="Wrap" Text="@usuario" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="labelContraseña" Content="Contraseña" HorizontalAlignment="Left" Margin="202,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.471,-1.115"/>
+        <TextBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Height="23" Margin="182,136,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Top" Width="120" />
 
     </Grid>
 </Window>
