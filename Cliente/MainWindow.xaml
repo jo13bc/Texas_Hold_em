@@ -15,4 +15,5 @@
         <TextBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Height="23" Margin="182,136,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Top" Width="120" />
 
     </Grid>
+
 </Window>
