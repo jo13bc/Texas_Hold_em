@@ -5,12 +5,12 @@ using System.Text;
 namespace Servidor.Cartas
 {
 
-    class Carta
+    public class Carta
     {
 
-        Rango valorCarta;
-        Palo paloCarta;
-        bool bocaArriba;
+        private Rango valorCarta;
+        private Palo paloCarta;
+        private bool bocaArriba;
         public enum Rango
         {
             Dos = 2, Tres = 3, Cuatro = 4, Cinco = 5, Seis = 6, Siete = 7, Ocho = 8, Nueve = 9, Diez = 10,
@@ -25,12 +25,12 @@ namespace Servidor.Cartas
             Espada = 3 // ♠
         }
 
-        Carta() {
+        public Carta() {
             valorCarta = Rango.As ;
             paloCarta = Palo.Corazon;
             bocaArriba = false;
         }
-        Carta(Rango r, Palo p, bool b)
+        public  Carta(Rango r, Palo p, bool b)
         {
             valorCarta = r;
             paloCarta = p;
@@ -40,13 +40,13 @@ namespace Servidor.Cartas
         ~Carta(){ }
 
 
-        Rango getValor() { return valorCarta; }
-        Palo getPalo() { return paloCarta; }
-        bool estaBocaArriba() { return bocaArriba; }
+        public Rango getValor() { return valorCarta; }
+        public Palo getPalo() { return paloCarta; }
+        public bool estaBocaArriba() { return bocaArriba; }
 
-        void setValor(Rango r) { valorCarta = r; }
-        void setPalo(Palo p) { paloCarta = p; }
-        void voltear() { bocaArriba = !bocaArriba; }
+        public void setValor(Rango r) { valorCarta = r; }
+        public void setPalo(Palo p) { paloCarta = p; }
+        public void voltear() { bocaArriba = !bocaArriba; }
     }
  }
 
