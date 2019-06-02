@@ -24,7 +24,7 @@ namespace Servidor.juego.gui
             settings.setSmallBind(settings.getPlayerChip() / 100);
             IGameController controller = new IGameController();
             controller.setSettings(settings);
-            for (IStrategy strategy: strategies) {
+            foreach (IStrategy strategy in strategies) {
                 controller.addStrategy(strategy);
             }
             controller.start();
