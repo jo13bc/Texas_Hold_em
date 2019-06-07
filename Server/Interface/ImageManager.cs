@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-namespace Servidor.juego.gui
+namespace Servidor.Interface
 {
     public enum ImageManagger
     private static Logger logger = loggerFactory.getLogger(ImageManager.class);

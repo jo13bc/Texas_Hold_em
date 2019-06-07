@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace Servidor
+namespace Servidor.Conection
 {
     class Servidor
     {

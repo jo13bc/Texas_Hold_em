@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace Servidor.org.util.Dispatcher
+namespace Servidor.Events
 {
     class GameEventDispatcher : IGameEventDispatcher
     {

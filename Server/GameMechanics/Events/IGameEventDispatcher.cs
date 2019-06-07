@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace Servidor.org.util.Dispatcher
+namespace Servidor.Events
 {
     interface IGameEventDispatcher
     {

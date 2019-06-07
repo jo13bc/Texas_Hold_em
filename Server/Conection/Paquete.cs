@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Servidor
+namespace Servidor.Conection
 {
     public class Paquete
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Servidor.juego.gui
+namespace Servidor.Interface
 {
     public sealed class MainController {
         private static readonly int PLAYERS = 4;

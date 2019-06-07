@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 //i really do not think that this page is necessary!
-namespace Servidor.juego.gui
+namespace Servidor.Interface
 {
     class TexasHoldemView /*extends javax.swing.JFrame*/{
         private static readonly int WINDOW_HEIGHT = 800;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Servidor.juego.gui
+namespace Servidor.Interface
 {
     class TexasHoldemTablePanel implements IStrategy {
         private static readonly int PLAYER_PADDING = 6;
