@@ -41,7 +41,7 @@ namespace Servidor.Jugador
         {
             this.chips += chips;
         }
-        public bool isInactive()
+        public bool isActive()
         {
             return TexasHoldEmUtil.getPlayerState(state);
         }

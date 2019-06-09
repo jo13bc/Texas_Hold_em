@@ -89,12 +89,14 @@ namespace Servidor.Jugador
         {
             players.Remove(player);
         }
-        public void addCommunityCard(Card card)
+        public bool addCommunityCard(Card card)
         {
             if(communityCards.Count < TexasHoldEmUtil.COMMUNITY_CARDS)
             {
                 communityCards.Add(card);
+                return true;
             }
+            return false;   
         }
         public void clearCommunityCard()
         {
