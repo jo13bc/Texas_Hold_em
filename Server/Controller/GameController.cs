@@ -7,6 +7,7 @@ using Servidor.Configurations;
 using Servidor.Events;
 using Servidor.GameMechanics;
 using Servidor.Jugador;
+using static Servidor.GameMechanics.Events.Dispactcher;
 
 namespace Servidor.Controller
 {
@@ -34,15 +35,15 @@ namespace Servidor.Controller
 
         private readonly Dictionary<String, IGameEventDispatcher> players = new Dictionary<string, IGameEventDispatcher>();
         private readonly List<String> playersByName = new List<string>();
-        private readonly Dictionary<String, IGameEventProcessor<IStrategy>> playerProcessors = new Dictionary<String, IGameEventProcessor<IStrategy>>();
+        private readonly Dictionary<String, IGameEventProcessor<IStrategy>.process> playerProcessors = new Dictionary<String, IGameEventProcessor<IStrategy>.process>();
 
         private readonly GameEventDispatcher<StateMachineConnector> connectorDispatcher;
         private readonly StateMachineConnector stateMachineConnector;
 
         private Settings settings;
 
-        private ExecutorService executors;        
-        private List<ExecutorService> subExecutors = new List<ExecutorService>();
+        private Dispatcher executors;        
+        private List<Dispatcher> subExecutors = new List<Dispatcher>();
 
 
         public GameController()
@@ -54,19 +55,13 @@ namespace Servidor.Controller
         }
 
 
-        private ExecutorService buildExecutor(int threads) {
+        private Dispatcher buildExecutor(int threads) {
             ExecuteService result = Executors.newFixedThreadPool(threads);
             subExecutors.Add(result);
             return result;
         }
 
-        public void setSettings(Settings s) {
-            settings = s;
-        }
-        public bool addStrategy(IStrategy strategy)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private static Dictionary<String, IGameEventProcessor<StateMachineConnector>.process> buildConnectorProcessors(){
 
@@ -104,6 +99,21 @@ namespace Servidor.Controller
 
             return ppm;
         }
+
+        public void setSettings(Settings s)
+        {
+            settings = s;
+        }
+        public bool addStrategy(IStrategy strategy)
+        {
+            bool result = false;
+            String name = strategy.getName();
+            if (!players.ContainsKey(name)&&!SYSTEM_CONTROLLER.Equals(name)) {
+                players.Add(name,, new GameEventDispatcher<IGameEventDispatcher>(strategy,playerProcessors,buildExecutor(DISPATCHER_THREADS)));
+            }
+            return true;
+        }
+
         public void start()
         {
             throw new NotImplementedException();

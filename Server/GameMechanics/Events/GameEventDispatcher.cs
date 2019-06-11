@@ -10,20 +10,20 @@ namespace Servidor.Events
         private readonly Thread thread;
 
         public readonly String EXIT_EVENT_TYPE = "exit";
-        private Dictionary<String, IGameEventProcessor<T>> processors;
+        private Dictionary<String, IGameEventProcessor<T>.process> processors;
         public readonly T target;
         private List<GameEvent> events = new List<GameEvent>();
         private bool exxit = false;
         //private ExecutorService executors;
 
 
-        public GameEventDispatcher(T t, Dictionary<String, IGameEventProcessor<T>> p//, ExecutorService e
-           ,Thread th) {
+        public GameEventDispatcher(T t, Dictionary<String, IGameEventProcessor<T>.process> p, ExecutorService e
+         ) {
 
-            thread = th;
+        
             target = t;
             processors = p;
-           // executors = e;
+            executors = e;
         }
 
         public void dispatch(GameEvent gameEvent)
