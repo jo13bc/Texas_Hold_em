@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using Servidor.Cartas;
 using Servidor.Configurations;
 using Servidor.Events;
 using Servidor.GameMechanics;
@@ -67,15 +68,42 @@ namespace Servidor.Controller
             throw new NotImplementedException();
         }
 
-        private static Dictionary<String, IGameEventProcessor<StateMachineConnector>>
-            buildConnectorProcessors(){
+        private static Dictionary<String, IGameEventProcessor<StateMachineConnector>.process> buildConnectorProcessors(){
 
-            Dictionary<String, IGameEventProcessor<StateMachineConnector>> 
-                cpm = new Dictionary<String, IGameEventProcessor<StateMachineConnector>>();
-            StateMachineConnector smc = new StateMachineConnector();
-            cpm.Add(CREATE_GAME_CONNECTOR_EVENT_TYPE, );
+            Dictionary<String, IGameEventProcessor<StateMachineConnector>.process> 
+                cpm = new Dictionary<String, IGameEventProcessor<StateMachineConnector>.process>();
+            StateMachineConnector smc = new StateMachineConnector(null);
+            cpm.Add(CREATE_GAME_CONNECTOR_EVENT_TYPE,(c ,e) => c.createGame((Settings )e.getPayload()));
+
+            cpm.Add(ADD_PLAYER_CONNECTOR_EVENT_TYPE,(c,e)=>c.addPlayer(e.getSource()));
+
+            cpm.Add(INIT_HAND_EVENT_TYPE,(c,e)=>c.startGame());
+
+            cpm.Add(BET_COMMAND_EVENT_TYPE,(c,e)=>c.betCommand(e.getSource(),(BetCommand)e.getPayload()));
+
+            
+            return cpm;
         }
 
+        private Dictionary<String, IGameEventProcessor<IStrategy>.process> buildPlayerProcessors() {
+            Dictionary<String, IGameEventProcessor<IStrategy>.process> ppm = new Dictionary<string, IGameEventProcessor<IStrategy>.process>();
+            IGameEventProcessor<IStrategy>.process defaultProcessor = (s, e) => s.updateState((GameInfo<PlayerInfo>)e.getPayload());
+
+            ppm.Add(INIT_HAND_EVENT_TYPE,defaultProcessor);
+            ppm.Add(END_GAME_PLAYER_EVENT_TYPE,defaultProcessor);
+            ppm.Add(BET_COMMAND_EVENT_TYPE,(s,e)=>s.onPlayerCommand(e.getSource(),(BetCommand)e.getPayload()));
+            ppm.Add(CHECK_PLAYER_EVENT_TYPE,(s,e)=>s.check((List<Card>) e.getPayload()));
+            ppm.Add(GET_COMMAND_PLAYER_EVENT_TYPE,(s,e)=> {
+
+                GameInfo<PlayerInfo> gi = (GameInfo < PlayerInfo >) e.getPayload();
+                String playerTurn = gi.getPlayers()[(gi.getPlayerTurn())].getName();
+                BetCommand cmd = s.GetCommand(gi);
+                connectorDispatcher.dispatch(new GameEvent(BET_COMMAND_EVENT_TYPE,playerTurn,cmd));
+
+            });
+
+            return ppm;
+        }
         public void start()
         {
             throw new NotImplementedException();

@@ -6,6 +6,6 @@ namespace Servidor.Events
 {
     public class IGameEventProcessor<T>
     {
-        delegate void process(T target, GameEvent _event);
+        public delegate void process(T target, GameEvent _event);
     }
 }

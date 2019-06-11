@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Servidor.Events
 {
-    class GameEvent : IDisposable, INotifyPropertyChanged
+    public class GameEvent : IDisposable, INotifyPropertyChanged
     {
         private String type;
         private String source;
