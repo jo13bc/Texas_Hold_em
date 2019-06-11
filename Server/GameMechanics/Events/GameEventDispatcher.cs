@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Threading;
 
 namespace Servidor.Events
 {
     class GameEventDispatcher<T> : IGameEventDispatcher
     {
-
+        private readonly Thread thread;
 
         public readonly String EXIT_EVENT_TYPE = "exit";
         private Dictionary<String, IGameEventProcessor<T>> processors;
@@ -18,11 +18,14 @@ namespace Servidor.Events
 
 
         public GameEventDispatcher(T t, Dictionary<String, IGameEventProcessor<T>> p//, ExecutorService e
-            ) {
+           ,Thread th) {
+
+            thread = th;
             target = t;
             processors = p;
            // executors = e;
         }
+
         public void dispatch(GameEvent gameEvent)
         {
             events.Add(gameEvent);
@@ -35,7 +38,11 @@ namespace Servidor.Events
             //this.notify();
         }
 
-
+        private void doTask()
+        {
+            List<GameEvent> lastsEvents;
+          //  Thread.SpinWait();
+        }
     }
 
 }
