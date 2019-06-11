@@ -80,7 +80,7 @@ namespace Servidor.Conection
                 _acceptThread = new Thread(AceptarClientes);
                 _acceptThread.Start();
             }
-            catch (Exception e)
+            catch (ArgumentNullException e)
             {
                 Console.WriteLine(string.Format("Error: {0}", e.Message.ToString()));
             }
@@ -101,7 +101,7 @@ namespace Servidor.Conection
                     if (OnClientConnected != null)
                         OnClientConnected(srvClient);
                 }
-                catch (Exception e)
+                catch (ArgumentNullException e)
                 {
                     Console.WriteLine(string.Format("Error: {0}", e.Message.ToString()));
                 }
@@ -150,7 +150,7 @@ namespace Servidor.Conection
                 {
                     break;
                 }
-                catch (Exception e)
+                catch (ArgumentNullException e)
                 {
                     Console.WriteLine(string.Format("Error: {0}", e.Message.ToString()));
 

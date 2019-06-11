@@ -20,7 +20,7 @@ namespace Servidor.Conection
         public delegate void DisconnectNotify();
         public event DisconnectNotify OnDisconnect;
 
-        public delegate void ErrorCarrier(Exception e);
+        public delegate void ErrorCarrier(ExecutionContext e);
         public event ErrorCarrier OnError;
 
         public ConexionTCP(TcpClient client)
@@ -37,10 +37,8 @@ namespace Servidor.Conection
                 StreamWriter.Write(mensaje + "\0");
                 StreamWriter.Flush();
             }
-            catch (Exception e)
+            catch (ArgumentNullException e)
             {
-                if (OnError != null)
-                    OnError(e);
             }
         }
         public void EnviarPaquete(Paquete paquete)

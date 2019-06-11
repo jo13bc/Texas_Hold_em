@@ -82,7 +82,7 @@ namespace Servidor.Jugador
         {
             return cards[index];
         }
-        public void setCard(Card card0, Card card1)
+        public void setCards(Card card0, Card card1)
         {
             cards[0] = card0;
             cards[1] = card1;

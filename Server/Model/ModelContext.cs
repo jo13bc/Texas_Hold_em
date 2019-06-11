@@ -79,7 +79,7 @@ namespace Servidor.Model
         {
             return _gameInfo.getDealer();
         }
-        public void getDealer(int _dealer)
+        public void setDealer(int _dealer)
         {
             this._gameInfo.setDealer(_dealer);
         }

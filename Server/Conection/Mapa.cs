@@ -47,7 +47,7 @@ namespace Servidor.Conection
                     lista.Add(linea);
                 }
             }
-            catch (Exception)
+            catch (ArgumentNullException)
             {
                 return null;
             }
