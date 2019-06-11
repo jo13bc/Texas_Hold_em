@@ -6,8 +6,9 @@ using Servidor.Cartas;
 using Servidor.Configurations;
 using Servidor.Events;
 using Servidor.GameMechanics;
+using Servidor.GameMechanics.Events;
 using Servidor.Jugador;
-using static Servidor.GameMechanics.Events.Dispactcher;
+using static Servidor.GameMechanics.Events.Dispatcher;
 
 namespace Servidor.Controller
 {
@@ -34,7 +35,7 @@ namespace Servidor.Controller
         public static readonly String CREATE_GAME_CONNECTOR_EVENT_TYPE = "createGame";
 
         private readonly Dictionary<String, IGameEventDispatcher> players = new Dictionary<string, IGameEventDispatcher>();
-        private readonly List<String> playersByName = new List<string>();
+        private readonly List<String> playersByName = new List<String>();
         private readonly Dictionary<String, IGameEventProcessor<IStrategy>.process> playerProcessors = new Dictionary<String, IGameEventProcessor<IStrategy>.process>();
 
         private readonly GameEventDispatcher<StateMachineConnector> connectorDispatcher;
@@ -42,26 +43,28 @@ namespace Servidor.Controller
 
         private Settings settings;
 
-        private Dispatcher executors;        
-        private List<Dispatcher> subExecutors = new List<Dispatcher>();
+        //private Dispatcher executors;        
+        //private List<Dispatcher> subExecutors = new List<Dispatcher>();
 
 
         public GameController()
         {
             stateMachineConnector = new StateMachineConnector(players);
-            connectorDispatcher = new GameEventDispatcher<StateMachineConnector>(StateMachineConnector,buildConnectorProcessors(),buildExecutor(1));
+            //connectorDispatcher = new GameEventDispatcher<StateMachineConnector>(StateMachineConnector,buildConnectorProcessors(),buildExecutor(1));
             stateMachineConnector.setSystem(connectorDispatcher);
             playerProcessors = buildPlayerProcessors();
         }
 
 
-        private Dispatcher buildExecutor(int threads) {
-            ExecuteService result = Executors.newFixedThreadPool(threads);
-            subExecutors.Add(result);
-            return result;
+        private Dispatcher buildExecutor(int threads)
+        {
+            //Dispatcher result = Executors.newFixedThreadPool(threads);
+            //subExecutors.Add(result);
+            //return result;
+            return null;
         }
 
-        
+
 
         private static Dictionary<String, IGameEventProcessor<StateMachineConnector>.process> buildConnectorProcessors(){
 
@@ -109,9 +112,11 @@ namespace Servidor.Controller
             bool result = false;
             String name = strategy.getName();
             if (!players.ContainsKey(name)&&!SYSTEM_CONTROLLER.Equals(name)) {
-                players.Add(name,, new GameEventDispatcher<IGameEventDispatcher>(strategy,playerProcessors,buildExecutor(DISPATCHER_THREADS)));
+                players.Add(name, new GameEventDispatcher<IGameEventDispatcher>(strategy, playerProcessors, buildExecutor(DISPATCHER_THREADS)));
+                playersByName.Add(name);
+                result = true;
             }
-            return true;
+            return result;
         }
 
         public void start()
@@ -121,7 +126,7 @@ namespace Servidor.Controller
 
         public void waitFinish()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Servidor.GameMechanics.Events;
+﻿using Servidor.GameMechanics;
+using Servidor.GameMechanics.Events;
+using Servidor.Jugador;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +33,19 @@ namespace Servidor.Events
             target = t;
             processors = p;
             dispatcher = d;
+        }
+
+        public GameEventDispatcher(StateMachineConnector t, Dictionary<String, IGameEventProcessor<T>.process> p, Dispatcher d) {
+            //target = (StateMachineConnector) t;
+            processors = p;
+            dispatcher = d;
+        }
+
+        public GameEventDispatcher(IStrategy strategy, Dictionary<string, IGameEventProcessor<IStrategy>.process> playerProcessors, Dispatcher dispatcher)
+        {
+            this.strategy = strategy;
+            this.playerProcessors = playerProcessors;
+            this.dispatcher = dispatcher;
         }
 
         public void dispatch(GameEvent gameEvent)
@@ -112,6 +127,9 @@ namespace Servidor.Events
 
         #region IDisposable implementation
         private bool _isDisposed = false;
+        private IStrategy strategy;
+        private Dictionary<string, IGameEventProcessor<IStrategy>.process> playerProcessors;
+
         public void Dispose()
         {
             if (!_isDisposed)
