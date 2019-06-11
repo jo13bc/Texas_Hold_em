@@ -35,5 +35,7 @@ namespace Servidor.Logic.Player
         {
             this._handValue = _handValue;
         }
+
+     
     }
 }
