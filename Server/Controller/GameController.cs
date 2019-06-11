@@ -47,19 +47,33 @@ namespace Servidor.Controller
         public GameController()
         {
             stateMachineConnector = new StateMachineConnector(players);
-            connectorDispatcher = new GameEventDispatcher<StateMachineConnector>(StateMachineConnector,buildConnectorProcessors(),buildExecutor());
+            connectorDispatcher = new GameEventDispatcher<StateMachineConnector>(StateMachineConnector,buildConnectorProcessors(),buildExecutor(1));
             stateMachineConnector.setSystem(connectorDispatcher);
             playerProcessors = buildPlayerProcessors();
         }
 
+
+        private ExecutorService buildExecutor(int threads) {
+            ExecuteService result = Executors.newFixedThreadPool(threads);
+            subExecutors.Add(result);
+            return result;
+        }
+
+        public void setSettings(Settings s) {
+            settings = s;
+        }
         public bool addStrategy(IStrategy strategy)
         {
             throw new NotImplementedException();
         }
 
-        public void setSettings(Settings settings)
-        {
-            throw new NotImplementedException();
+        private static Dictionary<String, IGameEventProcessor<StateMachineConnector>>
+            buildConnectorProcessors(){
+
+            Dictionary<String, IGameEventProcessor<StateMachineConnector>> 
+                cpm = new Dictionary<String, IGameEventProcessor<StateMachineConnector>>();
+            StateMachineConnector smc = new StateMachineConnector();
+            cpm.Add(CREATE_GAME_CONNECTOR_EVENT_TYPE, );
         }
 
         public void start()
