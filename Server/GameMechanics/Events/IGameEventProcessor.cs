@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Servidor.Events
 {
-    interface IGameEventProcessor<T>
+    public class IGameEventProcessor<T>
     {
-        void process(T target , GameEvent _event);
+        delegate void process(T target, GameEvent _event);
     }
 }

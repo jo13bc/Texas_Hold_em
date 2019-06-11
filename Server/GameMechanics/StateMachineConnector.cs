@@ -27,11 +27,6 @@ namespace Servidor.GameMechanics
             this.playerDispatcher = pd;
         }
 
-        private static StateMachine<ModelContext> buildStateMachine()
-        {
-            throw new NotImplementedException();
-        }
-
         public void createGame(Settings settings)
         {
             if (model == null)
@@ -85,7 +80,7 @@ namespace Servidor.GameMechanics
         }
        private void notifyInitHand()
         {
-            notifyEvent(GameController.INIT_HAND_EVENT_TYPE);
+            //notifyEvent(GameController.INIT_HAND_EVENT_TYPE);
         }
 
         private void notifyBetCommand()
@@ -118,7 +113,7 @@ namespace Servidor.GameMechanics
 
         }
 
-        private StateMachine<ModelContext> buildStateMachine()
+        private static StateMachine<ModelContext> buildStateMachine()
         {
 
 
