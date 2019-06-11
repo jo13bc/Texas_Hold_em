@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Servidor.Cartas
 {
-    class Deck
+    public class Deck
     {
         private readonly List<Card> cards;
         private int index = 0;

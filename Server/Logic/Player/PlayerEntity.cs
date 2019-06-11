@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servidor.Logic.Player
 {
-    class PlayerEntity : PlayerInfo
+    public class PlayerEntity : PlayerInfo
     {
         private int _handValue = 0;
         private BetCommand _betCommand;

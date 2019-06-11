@@ -10,7 +10,7 @@ using static Servidor.Utility.TexasHoldem.TexasHoldEmUtil;
 
 namespace Servidor.Model
 {
-    class ModelContext
+    public class ModelContext
     {
         private readonly GameInfo<PlayerEntity> _gameInfo = new GameInfo<PlayerEntity>();
         private readonly Dictionary<string, PlayerEntity> _playersByName;

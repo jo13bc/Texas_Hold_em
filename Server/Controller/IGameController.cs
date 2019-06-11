@@ -1,11 +1,12 @@
 ﻿using Servidor.Configurations;
+using Servidor.Jugador;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Servidor.Jugador
+namespace Servidor.Controller
 {
-    interface IGameController
+    public interface IGameController
     {
         void setSettings(Settings settings);
         bool addStrategy(IStrategy strategy);

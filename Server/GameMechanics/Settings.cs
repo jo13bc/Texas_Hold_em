@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Servidor.Configurations
 {
-    class Settings
+    public class Settings
     {
         private int maxPlayers;
         private long time;

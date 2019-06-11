@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Servidor.Jugador
 {
-    interface IStrategy
+    public interface IStrategy
     {
         String getName();
         BetCommand GetCommand(GameInfo<PlayerInfo> state);

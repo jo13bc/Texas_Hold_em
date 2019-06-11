@@ -7,7 +7,7 @@ using static Servidor.Utility.TexasHoldem.TexasHoldEmUtil;
 
 namespace Servidor.Jugador
 {
-    class PlayerInfo
+    public class PlayerInfo
     {
         private String name;
         private long chips;

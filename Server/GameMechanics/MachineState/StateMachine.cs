@@ -17,7 +17,7 @@ namespace Servidor.GameMechanics.MachineState
         }
         public List<Transition<T>> getTransitionsByOrigin(IState<T> state)
         {
-            List<Transition<T>> result = transitions[state.getName()];
+            List<Transition<T>> result = transitions.GetValueOrDefault(state.getName());
             if (result == null)
             {
                 result = new List<Transition<T>>();
@@ -30,7 +30,7 @@ namespace Servidor.GameMechanics.MachineState
         }
         public IState<T> getDefaultTransition(IState<T> origin)
         {
-            return defaultTransition[origin.getName()];
+            return defaultTransition.GetValueOrDefault(origin.getName());
         }
         public void setDefaultTransition(IState<T> origin, IState<T> target)
         {
@@ -39,7 +39,7 @@ namespace Servidor.GameMechanics.MachineState
         public void addTransition(Transition<T> transition)
         {
             IState<T> origin = transition.getOrigin();
-            List<Transition<T>> listTransitions = transitions[(origin.getName())];
+            List<Transition<T>> listTransitions = transitions.GetValueOrDefault(origin.getName());
             if (listTransitions == null)
             {
                 listTransitions = new List<Transition<T>>();

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Servidor.Jugador
 {
-    class GameInfo <P> : PlayerInfo
+    public class GameInfo <P> : PlayerInfo
     {
         private int round;
         private int dealer;

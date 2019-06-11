@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Servidor.Utility.TexasHoldem
 {
-    class TexasHoldEmUtil
+    public class TexasHoldEmUtil
     {
         public static readonly int MIN_PLAYER = 4;
         public static readonly int PLAYER_CARDS = 2;

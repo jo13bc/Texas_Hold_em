@@ -5,7 +5,7 @@ using static Servidor.Utility.TexasHoldem.TexasHoldEmUtil;
 
 namespace Servidor.Jugador
 {
-    class BetCommand
+    public class BetCommand
     {
         private readonly BetCommandType type;
         private long chips;
