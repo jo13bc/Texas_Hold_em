@@ -33,7 +33,7 @@ namespace Servidor.Controller
         public static GameInfo<PlayerInfo> toTableState(ModelContext model, String name)
         {
             GameInfo<PlayerInfo> result = new GameInfo<PlayerInfo>();
-            result.setCommunityCards(model.getCommunityCars());
+            result.setCommunityCards(model.getCommunityCards());
             result.setDealer(model.getDealer());
             result.setGameState(model.getGameState());
             result.setPlayerTurn(model.getPlayerTurn());

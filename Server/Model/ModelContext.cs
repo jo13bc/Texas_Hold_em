@@ -121,7 +121,7 @@ namespace Servidor.Model
         {
             return _gameInfo.getSettings();
         }
-        public List<Card> getCommunityCars()
+        public List<Card> getCommunityCards()
         {
             return _gameInfo.getCommunityCards();
         }

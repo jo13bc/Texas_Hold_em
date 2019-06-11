@@ -19,7 +19,7 @@ namespace Servidor.GameMechanics.State
 
         public bool execute(ModelContext model)
         {
-            List<PlayerEntity> players = calculateHandValue(model.getCommunityCars(), model.getPlayers());
+            List<PlayerEntity> players = calculateHandValue(model.getCommunityCards(), model.getPlayers());
             Dictionary<long, List<PlayerEntity>> indexByBet = new Dictionary<long, List<PlayerEntity>>();
 
             //List<PlayerEntity> lista = agrupar( players);
