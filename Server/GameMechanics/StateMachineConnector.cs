@@ -150,5 +150,7 @@ namespace Servidor.GameMechanics
 
             return null;
         }
+
+        public void setSystem(GameEventDispatcher<StateMachineConnector> g) {  }
     }
 }
