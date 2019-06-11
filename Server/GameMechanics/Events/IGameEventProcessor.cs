@@ -6,6 +6,6 @@ namespace Servidor.Events
 {
     interface IGameEventProcessor<T>
     {
-        void process(T target , GameEvent @event);
+        void process(T target , GameEvent _event);
     }
 }

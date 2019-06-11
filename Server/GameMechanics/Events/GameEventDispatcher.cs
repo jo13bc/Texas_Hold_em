@@ -5,27 +5,37 @@ using System.Text;
 
 namespace Servidor.Events
 {
-    class GameEventDispatcher : IGameEventDispatcher
+    class GameEventDispatcher<T> : IGameEventDispatcher
     {
 
-        //private static const Logger LOGGER = LoggerFactory.getLogger(GameEventDispatcher.class);
-        //private const Dictionary<E, IGameEventProcessor<E, T>> processors;
-        //private const T target;
-        //private const E exitEven;
 
-        //private List<GameEvent> events = new ArrayList<GameEvent>();
-        //private volatile bool exit = false;
+        public readonly String EXIT_EVENT_TYPE = "exit";
+        private Dictionary<String, IGameEventProcessor<T>> processors;
+        public readonly T target;
+        private List<GameEvent> events = new List<GameEvent>();
+        private bool exxit = false;
         //private ExecutorService executors;
 
+
+        public GameEventDispatcher(T t, Dictionary<String, IGameEventProcessor<T>> p//, ExecutorService e
+            ) {
+            target = t;
+            processors = p;
+           // executors = e;
+        }
         public void dispatch(GameEvent gameEvent)
         {
-            throw new NotImplementedException();
+            events.Add(gameEvent);
+            //this.notify();
         }
 
         public void exit()
         {
-            throw new NotImplementedException();
+            exxit = true;
+            //this.notify();
         }
+
+
     }
 
 }
