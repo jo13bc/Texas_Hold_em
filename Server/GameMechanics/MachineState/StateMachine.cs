@@ -47,7 +47,7 @@ namespace Servidor.GameMechanics.MachineState
             }
             listTransitions.Add(transition);
         }
-        public void addTransition(IState<T> origin, IState<T> target, IChecker<T> checker)
+        public void addTransition(IState<T> origin, IState<T> target, IChecker<T>.check checker)
         {
             addTransition(new Transition<T>(origin, target, checker));
         }

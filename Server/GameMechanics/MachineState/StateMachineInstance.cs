@@ -53,7 +53,7 @@ namespace Servidor.GameMechanics.MachineState
             {
                 foreach(Transition<T> transition in parent.getTransitionsByOrigin(state))
                 {
-                    if (transition.getChecker().check(context))
+                    if (transition.getChecker()(context))
                     {
                         return transition.getTarget();
                     }

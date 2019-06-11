@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Servidor.GameMechanics.MachineState
 {
-    public interface IChecker<T>
+    public class IChecker<T>
     {
-        bool check(T context);
+        public delegate bool check(T context);
     }
 }
+
+
+

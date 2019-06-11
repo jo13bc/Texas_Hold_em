@@ -30,7 +30,7 @@ namespace Servidor.GameMechanics.MachineState
         {
             if (executed)
             {
-                thread.Start(); ;
+                thread.Start();
             }
 
             executed = state.execute(context);

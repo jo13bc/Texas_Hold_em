@@ -10,10 +10,9 @@ namespace Servidor.GameMechanics.MachineState
     {
         private readonly IState<T> origin;
         private readonly IState<T> target;
-        private readonly IChecker<T> checker;
+        private readonly IChecker<T>.check checker;
 
-
-        public Transition(IState<T> origin, IState<T> target, IChecker<T> checker)
+        public Transition(IState<T> origin, IState<T> target, IChecker<T>.check checker)
         {
             this.origin = origin;
             this.origin = target;
@@ -30,7 +29,7 @@ namespace Servidor.GameMechanics.MachineState
             return target;
         }
 
-        public IChecker<T> getChecker()
+        public IChecker<T>.check getChecker()
         {
             return checker;
         }

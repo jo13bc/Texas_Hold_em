@@ -9,6 +9,6 @@ namespace Servidor.GameMechanics.MachineState
     public interface IState<T>
     {
         string getName();
-        bool execute(T context);
+        bool execute(T model);
     }
 }
