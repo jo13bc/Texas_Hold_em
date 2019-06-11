@@ -1,14 +1,8 @@
-﻿using Servidor.Cartas;
-using Servidor.Configurations;
-using Servidor.GameMechanics.MachineState;
-using Servidor.Hand;
-using Servidor.Jugador;
+﻿using Servidor.GameMechanics.MachineState;
 using Servidor.Logic.Player;
 using Servidor.Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using static Servidor.Utility.TexasHoldem.TexasHoldEmUtil;
 
 
 namespace Servidor.GameMechanics.State

@@ -4,13 +4,16 @@
 
 //namespace Servidor.Interface
 //{
-//    public sealed class MainController {
+//    public sealed class MainController
+//    {
 //        private static readonly int PLAYERS = 4;
-//        public static void Main(string[] args) {
+//        public static void Main(string[] args)
+//        {
 //            IStrategy strategyMain = new RandomStrategy("RandomStrategy-0");
 //            List<IStrategy> strategies = new ArrayList<>();
 //            strategies.add(strategyMain);
-//            for (int i = 1; i < PLAYERS; i++) {
+//            for (int i = 1; i < PLAYERS; i++)
+//            {
 //                strategies.add(new RandomStrategy("RandomStrategy-" + string.valueOf(i)));
 //            }
 //            Collections.shuffle(strategies);
@@ -24,7 +27,8 @@
 //            settings.setSmallBind(settings.getPlayerChip() / 100);
 //            IGameController controller = new IGameController();
 //            controller.setSettings(settings);
-//            foreach (IStrategy strategy in strategies) {
+//            foreach (IStrategy strategy in strategies)
+//            {
 //                controller.addStrategy(strategy);
 //            }
 //            controller.start();
